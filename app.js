@@ -276,25 +276,36 @@ function printAllToConsole(dataObj){
 printAllToConsole(dataObject);
 */
 
-function initSearch(){
-	alert("Hello World");
+var people = [];
+var traitsToSearch = [];
+var immediateFamily = [];
+function exit(){
+  		window.exit(0);
+}
 
-	// get all the information you need to run the search
-	var yourName = prompt("Who do you want to search for?");
+startSearch();
 
-	// then pass that info to the respective function.
-	var result = getPersonInfo("J", "T")
+
+
+function startSearch(){
+	alert("You are now entering\r\n codeName : Most Wanted\r\nFor use by authorized personnel only!")
+	var result = prompt("How do you want to search? Choose one of the following:\r\n'name'\r\n'family'\r\n'age'\r\n'trait'\r\n'traits'\r\n'descendants'\r\n'next of kin'\r\nType 'exit' to end.");
 
 	// once the search is done, pass the results to the responder function
 	responder(result);
 }
 
 function responder(results){
+	
 	// results may be a list of strings, an object, or a single string. 
 	alert(results);
 }
-
+function namePrompt()
+  	{
+  		return getPersonByName(prompt("Enter person's first name: "),prompt("Enter person's last name: "));
+  	}
 function getPersonInfo(firstname, lastname){
+
 	var result = "This will be the information for whoever you searched for";
 	// look up person's information
 	return result;
@@ -302,6 +313,21 @@ function getPersonInfo(firstname, lastname){
 
 function getFamily(){
 	// return list of names of immediate family members
+}
+function getDescendants(person){
+  	for (var item in dataObject) 
+  		{
+  			if(dataObject[item].parents.length != 0)
+  			{
+  				if(dataObject[item].parents[0] == person || dataObject[item].parents[1] == person)
+  				{
+  					people.push(item);
+  				}
+  			}
+  		}
+}
+function getKin() {
+
 }
 
 // there will be much more here, and some of the code above will certainly change
