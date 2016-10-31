@@ -269,19 +269,19 @@ var dataObject = {
 var people = [];
 var personList = [];
 changeDataObject();
-mainPrompt();
+startSearch();
 
 
-function mainPrompt(){
+function startSearch(){
 	alert("You are entering a classified site.\r\n codeName : Most Wanted \r\n Site is for authorized personnel only!")
 	var result = prompt("What would you like to do? Choose one of following to search:\r\n 'name' to search by first and last name.\r\n'descendants' to see all of a person's descendants.\r\n'next of kin' to see a person's next of kin.\r\n'traits' to search by up to 5 criteria.\r\n 'family' to see a person's immediate family.\r\n'exit' to end.");
 	if(result != "name" && result != 'descendants' && result != 'next of kin' && result != 'traits' && result != 'family' && result != 'exit'){
 		alert("invalid entry. try again.");
-		mainPrompt();
+		startSearch();
 	}else{
 		userInterface(result);
 	}
-	mainPrompt();
+	startSearch();
 }
 
 function userInterface(result){
@@ -327,7 +327,7 @@ function userInterface(result){
 			}
 	  	break;
 		case "exit":
-			alert("Good Bye!");
+			alert("Logout Confirmed.");
 			exit();
 			return;
 	}
@@ -335,20 +335,20 @@ function userInterface(result){
 
 function getTraitInput(typeSearch){
 	if(typeSearch == "eye color"){
-		var input = prompt("Enter a color:");
+		var input = prompt("Enter eye color:");
 		searchByTrait("eyeColor", input);
 	}else if(typeSearch == "height"){
 		var heightFT = parseInt(prompt("Enter feet:")) * 12;
 		var heightFull = parseInt(prompt("Enter inches:")) + heightFT;
 		searchByTrait("height", heightFull)
 	}else if(typeSearch == "weight"){
-		var input = prompt("Enter number of pounds:");
+		var input = prompt("Enter weight:");
 		searchByTrait(typeSearch, input);
 	}else if(typeSearch == "age"){
 		var input = prompt("Enter age:");
 		searchByTrait(typeSearch, input);
 	}else if(typeSearch == "occupation"){
-		var input = prompt("Enter in an occupation:")
+		var input = prompt("Enter occupation:")
 		searchByTrait(typeSearch, input);
 	}else if(typeSearch == "gender"){
 		var input = prompt("Type 'male' or 'female':");
@@ -368,7 +368,7 @@ function errorCheck(check){
   		}catch(error){
   			console.log(error.message);
   			console.log('No Data Found!');
-  			alert("NO DATA FOUND.");
+  			alert("No Data Found.");
   		}
 }
 
@@ -477,7 +477,7 @@ function splitUserInput(userInput){
 	if(userInput != ''){
 		searchFiveTraits(weight, height, ageRangeLow, ageRangeHigh, multiA, multiB, multiC);
 	}else{
-		alert("Returning to main screen due to blank entry.");
+		alert("Returning to main menu due to invalid entry.");
 	}
 }
 
